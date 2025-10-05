@@ -17,6 +17,7 @@ export default function PDFViewerApp({ pdfFilePath }: PDFViewerAppProps) {
     usePDFSlickStore,
     PDFSlickViewer,
   } = usePDFSlick(pdfFilePath, {
+    enableHWA: true,
     getDocumentParams: {
       disableAutoFetch: false, /** pages need to be loaded for printing, otherwise we get `Expected print service to be initialized.` */
       disableFontFace: false,
