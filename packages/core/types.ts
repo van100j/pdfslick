@@ -110,6 +110,7 @@ export type PDFSlickOptions = {
   pageColors?: { background: any; foreground: any };
   annotationEditorHighlightColors?: string,
   l10n?: any;
+  enableHWA?: boolean;
   maxCanvasPixels?: number;
   printResolution?: number;
   thumbnailWidth?: number;

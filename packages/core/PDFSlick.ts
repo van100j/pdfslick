@@ -116,6 +116,7 @@ export class PDFSlick {
     useOnlyCssZoom: boolean;
     pageColors: { background: any; foreground: any } | null;
     annotationEditorHighlightColors: string | undefined;
+    #enableHWA: boolean;
     textLayerMode: number;
     maxCanvasPixels: number;
     printResolution: number;
@@ -152,6 +153,7 @@ export class PDFSlick {
         this.enablePrintAutoRotate = options?.enablePrintAutoRotate ?? false;
         this.useOnlyCssZoom = options?.useOnlyCssZoom ?? false;
         this.pageColors = options?.pageColors ?? null;
+        this.#enableHWA = options?.enableHWA ?? false;
         this.maxCanvasPixels = options?.maxCanvasPixels ?? 16777216;
         this.printResolution = options?.printResolution ?? 96;
         this.thumbnailWidth = options?.thumbnailWidth ?? 125;
@@ -201,6 +203,7 @@ export class PDFSlick {
             annotationEditorMode: this.#annotationEditorMode,
             removePageBorders: this.removePageBorders,
             imageResourcesPath: "/images/",
+            enableHWA: this.#enableHWA,
         };
 
         const pdfViewer = this.singlePageViewer
@@ -215,7 +218,7 @@ export class PDFSlick {
                 linkService,
                 renderingQueue,
                 pageColors: this.pageColors,
-                enableHWA: undefined,
+                enableHWA: this.#enableHWA,
                 store: store,
                 thumbnailWidth: this.thumbnailWidth,
             });
